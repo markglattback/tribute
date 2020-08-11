@@ -6,12 +6,12 @@ export default function Create () {
   const [firstname, setFirstname] = useState('');
   const [surname, setSurname] = useState('');
   const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
   const form = useRef(null);
 
   function handleSubmit(e) {
     e.preventDefault();
-      
-      // const data = new FormData(form.current);
+    
       const data = {
         firstname,
         surname,
@@ -24,10 +24,17 @@ export default function Create () {
       headers: {
         'content-type': 'application/json'
       }
-    }).then(() => {
-      setFirstname('');
-      setSurname('');
-      setMessage('');
+    }).then(async (res) => {
+      if (res.status >= 400) {
+        const { message } = await res.json();
+        setError(message);
+      } else {
+        setFirstname('');
+        setSurname('');
+        setMessage('');
+      }
+    }).catch((err) => {
+      setError(err.message)
     });
 
 
@@ -79,6 +86,7 @@ export default function Create () {
           />
           <button type="submit">Submit</button>
         </form>
+  {error && <p>{error}</p>}
       </main>
     </div>
   );
