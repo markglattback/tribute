@@ -3,15 +3,16 @@ import { Tribute } from "../../models";
 
 const handler = async (req, res) => {
   const tribute = req.body;
-  await Tribute.create(tribute);
+
+  try {
+    await Tribute.create(tribute);
+  } catch(err) {
+    res.statusCode = 400;
+    return res.json({ message: 'There was a problem submitting your message. Please check all required fields have been completed.' })
+  }
+
   res.statusCode = 200;
-  res.json({ message: 'success' });
+  return res.json({ message: 'success' });
 };
 
 export default withDb(handler);
-
-export const config = {
-  api: {
-    bodyParser: true
-  }
-}
