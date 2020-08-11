@@ -7,15 +7,15 @@ const { ObjectId } = mongoose.SchemaTypes;
 const tributeSchema = new Schema(
   {
     firstname: {
-      required: true,
       type: String,
+      default: 'Anonymous',
     },
     surname: {
-      required: true,
       type: String,
     },
     message: {
-
+      required: true,
+      type: String,
     },
   },
   {
