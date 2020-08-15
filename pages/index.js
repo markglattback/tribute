@@ -31,6 +31,8 @@ export default function Index() {
           Tributes received from colleagues and friends
         </p>
 
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/sMWBFoGjRj4" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+
         <div className={styles.grid}>
           {tributes.map((tribute, index) => {
             return (
