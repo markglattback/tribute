@@ -1,3 +1,7 @@
+:root {
+  --black: #151515;
+}
+
 html,
 body {
   padding: 0;

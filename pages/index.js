@@ -1,6 +1,8 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import useSWR from "swr";
+
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -27,12 +29,19 @@ export default function Index() {
           Peter Glattback
         </h1>
 
-        <p className={styles.description}>
+
+        <div className={styles.videowrap}>
+          <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/sMWBFoGjRj4" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+
+        </div>
+
+        <Link href="/eulogy">
+          <a className={styles.a}>View the Eulogy</a>
+        </Link>
+
+        <h3 className={styles.h3}>
           Tributes received from colleagues and friends
-        </p>
-
-        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/sMWBFoGjRj4" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-
+        </h3>
         <div className={styles.grid}>
           {tributes.map((tribute, index) => {
             return (
